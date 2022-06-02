@@ -2,8 +2,10 @@
 
 ## read the csv data
 outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+
 ## look at the first few rows
 head(outcome)
+
 ## look at some more informations about dataset
 ncol(outcome)
 nrow(outcome)
@@ -11,6 +13,7 @@ dim(outcome)
 class(outcome)
 summary(outcome)
 names(outcome)
+
 ## let s set "30-day death rates from heart attack" (column 11 in the outcome dataset) as numeric
 outcome[,11] <- as.numeric(outcome[,11])
 hist(outcome[,11], col = 2, main = "Hospital 30-Day Death (mortality) rates for heart attack", xlab = "Deaths")
@@ -18,6 +21,7 @@ hist(outcome[,11], col = 2, main = "Hospital 30-Day Death (mortality) rates for 
 ## 2 Finding the best hospital in a state
 
 best <- function(state, outcome) {
+  
   ## Read outcome data
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character",na.strings="Not Available")
   
@@ -40,6 +44,7 @@ best <- function(state, outcome) {
 ## 3 Ranking hospitals by outcome in a state
 
 rankhospital <- function(state, outcome, num = "best") {
+  
   ## Read outcome data
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character",na.strings="Not Available")
   
@@ -65,6 +70,7 @@ rankhospital <- function(state, outcome, num = "best") {
 ## 4 Ranking hospitals in all states
 
 rankall <- function(outcome, num = "best") {
+  
   ## Read outcome data
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character",na.strings="Not Available")
   
