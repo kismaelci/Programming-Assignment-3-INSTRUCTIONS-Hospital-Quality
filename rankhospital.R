@@ -1,6 +1,7 @@
 ## 3 Ranking hospitals by outcome in a state
 
 rankhospital <- function(state, outcome, num = "best") {
+  
   ## Read outcome data
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character",na.strings="Not Available")
   
@@ -16,7 +17,6 @@ rankhospital <- function(state, outcome, num = "best") {
   
   ## Return hospital name in that state with the given rank 30-day death rate
   data.state <- data[data$State==state,]
-  
   classed.state <- data.state[order(as.numeric(data.state[[colName]]),data.state[["Hospital.Name"]],decreasing=FALSE,na.last=NA), ]
   if (num=="best") num = 1
   if (num=='worst') num = nrow(classed.state)
